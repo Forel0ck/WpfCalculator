@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using WpfCalculator.Others.Calculate;
+using static WpfCalculator.Others.Calculate;
 
 
 namespace TestsProect
@@ -16,7 +16,7 @@ namespace TestsProect
             double num2 = 11;
             double ex = 33;
 
-            double res = Calculate.Plus(num1, num2);
+            double res = Plus(num1, num2);
 
             Assert.AreEqual(ex, res);
         }

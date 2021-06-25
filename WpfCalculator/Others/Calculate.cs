@@ -9,16 +9,16 @@ namespace WpfCalculator.Others
     public class Calculate
     {
 
-        public static double Pow(double fo, double so)
+        public static double Pow(double var1, double var2)
         {
-            return (Math.Pow(fo, so));
+            return (Math.Pow(var1, var2));
         }
 
 
-        public static string Divide(string fo, string so)
+        public static string Divide(string var1, string var2)
         {
-            double num1 = Convert.ToDouble(fo);
-            double num2 = Convert.ToDouble(so);
+            double num1 = Convert.ToDouble(var1);
+            double num2 = Convert.ToDouble(var2);
 
             if ((num2 != 0))
             {
@@ -31,19 +31,19 @@ namespace WpfCalculator.Others
             return "";
         }
 
-        public static double Multiply(double fo, double so)
+        public static double Multiply(double var1, double var2)
         {
-            return (fo * so);
+            return (var1 * var2);
         }
 
-        public static double Minus(double fo, double so)
+        public static double Minus(double var1, double var2)
         {
-            return (fo - so);
+            return (var1 - var2);
         }
 
-        public static double Plus(double fo, double so)
+        public static double Plus(double var1, double var2)
         {
-            return (fo + so);
+            return (var1 + var2);
         }
     }
 }

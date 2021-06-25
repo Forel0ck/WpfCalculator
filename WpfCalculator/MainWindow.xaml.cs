@@ -13,9 +13,9 @@ namespace WPFCalc
     public partial class MainWindow : Window
     {
         public static int comma = 0;
-        public static int func = 0;
+        public static int nbr = 0;
         public static int PorM = 0;
-        public static int sw = 0;
+        public static int chr = 0;
         public static string num1 = null;
         public static int lght = 0;
         public MainWindow()
@@ -45,7 +45,6 @@ namespace WPFCalc
                 btnPLUS.IsEnabled = false;
                 btnERASE.IsEnabled = false;
                 btnCOMMA.IsEnabled = false;
-
                 txbSMALL.Text = "";
             }
             else if (n == 2)
@@ -129,9 +128,8 @@ namespace WPFCalc
                 txbSMALL.Text = null;
                 comma = 0;
                 PorM = 0;
-                func = 0;
+                nbr = 0;
                 num1 = null;
-
                 BlockUnlock(2);
             }
             catch (Exception)
@@ -208,7 +206,7 @@ namespace WPFCalc
                     num1 = txbBIG.Text;
                     txbSMALL.Text = txbBIG.Text + "^";
                     txbBIG.Text = null;
-                    func = 3;
+                    nbr = 3;
 
                 }
 
@@ -230,7 +228,7 @@ namespace WPFCalc
                 {
                     txbSMALL.Text = txbBIG.Text + "/";
                     txbBIG.Text = null;
-                    func = 5;
+                    nbr = 5;
                     comma = 0;
 
                     btnEQU.IsEnabled = true;
@@ -253,7 +251,7 @@ namespace WPFCalc
                 {
                     txbSMALL.Text = txbBIG.Text + "×";
                     txbBIG.Text = null;
-                    func = 6;
+                    nbr = 6;
                     comma = 0;
 
                     btnEQU.IsEnabled = true;
@@ -283,7 +281,7 @@ namespace WPFCalc
                     {
                         txbSMALL.Text = txbBIG.Text + "-";
                         txbBIG.Text = null;
-                        func = 7;
+                        nbr = 7;
                         PorM = 0;
                         comma = 0;
 
@@ -310,7 +308,7 @@ namespace WPFCalc
                 {
                     txbSMALL.Text = txbBIG.Text + "+";
                     txbBIG.Text = null;
-                    func = 8;
+                    nbr = 8;
                     comma = 0;
 
                     btnEQU.IsEnabled = true;
@@ -330,14 +328,14 @@ namespace WPFCalc
             {
                 if ((num1 != string.Empty) && (txbBIG.Text != "-") && (txbBIG.Text != string.Empty))
                 {
-                    if (func == 1)
+                    if (nbr == 1)
                     {
                         txbSMALL.Text += txbBIG.Text + "=";
 
                         num1 = null;
                         comma = 0;
                     }
-                    else if (func == 3)
+                    else if (nbr == 3)
                     {
                         txbSMALL.Text += txbBIG.Text;
                         txbBIG.Text = (Calculate.Pow(Convert.ToDouble(num1), Convert.ToDouble(txbBIG.Text))).ToString();
@@ -353,7 +351,7 @@ namespace WPFCalc
                         num1 = null;
                         comma = 0;
                     }
-                    else if (func == 5)
+                    else if (nbr == 5)
                     {
                         txbSMALL.Text += txbBIG.Text + "=";
                         txbBIG.Text = (Calculate.Divide(num1, txbBIG.Text));
@@ -370,7 +368,7 @@ namespace WPFCalc
                         comma = 0;
                         num1 = null;
                     }
-                    else if (func == 6)
+                    else if (nbr == 6)
                     {
                         txbSMALL.Text += txbBIG.Text + "=";
                         txbBIG.Text = (Calculate.Multiply(Convert.ToDouble(num1), Convert.ToDouble(txbBIG.Text))).ToString();
@@ -385,14 +383,14 @@ namespace WPFCalc
                         comma = 0;
                         num1 = null;
                     }
-                    else if (func == 7)
+                    else if (nbr == 7)
                     {
                         txbSMALL.Text += txbBIG.Text + "=";
                         txbBIG.Text = (Calculate.Minus(Convert.ToDouble(num1), Convert.ToDouble(txbBIG.Text))).ToString();
                         comma = 0;
                         num1 = null;
                     }
-                    else if (func == 8)
+                    else if (nbr == 8)
                     {
                         txbSMALL.Text += txbBIG.Text + "=";
                         txbBIG.Text = (Calculate.Plus(Convert.ToDouble(num1), Convert.ToDouble(txbBIG.Text))).ToString();
@@ -424,30 +422,21 @@ namespace WPFCalc
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            if ((e.Key == Key.D0) ||
-                (e.Key == Key.D1) ||
-                (e.Key == Key.D2) ||
-                (e.Key == Key.D3) ||
-                (e.Key == Key.D4) ||
-                (e.Key == Key.D5) ||
-                (e.Key == Key.D6) ||
-                (e.Key == Key.D7) ||
-                (e.Key == Key.D8) ||
-                (e.Key == Key.D9))
+            if ((e.Key == Key.D0) ||(e.Key == Key.D1) ||
+                (e.Key == Key.D2) ||(e.Key == Key.D3) ||
+                (e.Key == Key.D4) ||(e.Key == Key.D5) ||
+                (e.Key == Key.D6) ||(e.Key == Key.D7) ||
+                (e.Key == Key.D8) ||(e.Key == Key.D9))
             {
                 string str = e.Key.ToString();
                 txbBIG.Text += str[1];
             }
-            else if ((e.Key == Key.NumPad0) ||
-                     (e.Key == Key.NumPad1) ||
-                     (e.Key == Key.NumPad2) ||
-                     (e.Key == Key.NumPad3) ||
-                     (e.Key == Key.NumPad4) ||
-                     (e.Key == Key.NumPad5) ||
-                     (e.Key == Key.NumPad6) ||
-                     (e.Key == Key.NumPad7) ||
+            else if ((e.Key == Key.NumPad0) ||(e.Key == Key.NumPad1) ||
+                     (e.Key == Key.NumPad2) ||(e.Key == Key.NumPad3) ||
+                     (e.Key == Key.NumPad4) ||(e.Key == Key.NumPad5) ||
+                     (e.Key == Key.NumPad6) ||(e.Key == Key.NumPad7) ||
                      (e.Key == Key.NumPad8) ||
-                     (e.Key == Key.NumPad9))
+(e.Key == Key.NumPad9))
             {
                 string str = e.Key.ToString();
                 txbBIG.Text += str[6];

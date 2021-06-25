@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFCalc"
         mc:Ignorable="d"
+        ResizeMode="NoResize"
         Title="Calculator" 
         Height="400" 
         Width="280" 
@@ -25,8 +26,8 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="txbSMALL" Grid.Row="0" Grid.ColumnSpan="4" Margin="2" TextAlignment="Right" Text="0" FontSize="25" IsReadOnly="True"/>
-        <TextBox x:Name="txbBIG" Grid.Row="1" Grid.ColumnSpan="4" Margin="2" TextAlignment="Right" Text="0" FontSize="25" IsReadOnly="True"/>
+        <TextBox x:Name="txbSMALL" Grid.Row="0" Grid.ColumnSpan="4" Margin="2" TextAlignment="Right" FontSize="25" IsReadOnly="True"/>
+        <TextBox x:Name="txbBIG" Grid.Row="1" Grid.ColumnSpan="4" Margin="2" TextAlignment="Right"   FontSize="25" IsReadOnly="True"/>
         <Button x:Name="btn7" Content="7" Grid.Row="3" Grid.Column="0" FontSize="20" Margin="2" Click="btn7_Click"/>
         <Button x:Name="btn8" Content="8" Grid.Row="3" Grid.Column="1" FontSize="20" Margin="2" Click="btn8_Click"/>
         <Button x:Name="btn9" Content="9" Grid.Row="3" Grid.Column="2" FontSize="20" Margin="2" Click="btn9_Click"/>
@@ -45,6 +46,6 @@
         <Button x:Name="btnEQU" Content="=" Grid.Row="6" Grid.Column="2" FontSize="20" Margin="2" Grid.ColumnSpan="2" Click="btnEQU_Click"/>
         <Button x:Name="btnERASE" Content="←" Grid.Row="2" Grid.Column="0" FontSize="20" Margin="2" Click="btnERASE_Click"/>
         <Button x:Name="btnCE" Content="CE" Grid.Row="2" Grid.Column="1" FontSize="20" Margin="2" Click="btnCE_Click"/>
-        <Button x:Name="btnC" Content="C" Grid.Row="2" Grid.Column="2" FontSize="20" Margin="2" Click="btnCE_Click"/>
+        <Button x:Name="btnC" Content="C" Grid.Row="2" Grid.Column="2" FontSize="20" Margin="2" Click="btnC_Click"/>
     </Grid>
 </Window>
