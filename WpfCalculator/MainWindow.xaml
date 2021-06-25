@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFCalc"
         mc:Ignorable="d"
-        Title="WPF Calculator" 
+        Title="Calculator" 
         Height="400" 
         Width="280" 
-        PreviewTextInput="Window_PreviewTextInput" 
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="42"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -25,25 +25,26 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="txtInput" Grid.Row="0" Grid.ColumnSpan="4" Margin="2" TextAlignment="Right" Text="0" FontSize="20" IsReadOnly="True"/>
-        <Button x:Name="btn7" Content="7" Grid.Row="2" Grid.Column="0" FontSize="20" Margin="2" Click="regularButtonClick"/>
-        <Button x:Name="btn8" Content="8" Grid.Row="2" Grid.Column="1" FontSize="20" Margin="2" Click="regularButtonClick"/>
-        <Button x:Name="btn9" Content="9" Grid.Row="2" Grid.Column="2" FontSize="20" Margin="2" Click="regularButtonClick"/>
-        <Button x:Name="btn4" Content="4" Grid.Row="3" Grid.Column="0" FontSize="20" Margin="2" Click="regularButtonClick"/>
-        <Button x:Name="btn5" Content="5" Grid.Row="3" Grid.Column="1" FontSize="20" Margin="2" Click="regularButtonClick"/>
-        <Button x:Name="btn6" Content="6" Grid.Row="3" Grid.Column="2" FontSize="20" Margin="2" Click="regularButtonClick"/>
-        <Button x:Name="btn1" Content="1" Grid.Row="4" Grid.Column="0" FontSize="20" Margin="2" Click="regularButtonClick"/>
-        <Button x:Name="btn2" Content="2" Grid.Row="4" Grid.Column="1" FontSize="20" Margin="2" Click="regularButtonClick"/>
-        <Button x:Name="btn3" Content="3" Grid.Row="4" Grid.Column="2" FontSize="20" Margin="2" Click="regularButtonClick"/>
-        <Button x:Name="btn0" Content="0" Grid.Row="5" Grid.Column="0" FontSize="20" Margin="2" Click="regularButtonClick"/>
-        <Button x:Name="btnPoint" Content="." Grid.Row="5" Grid.Column="1" FontSize="20" Margin="2" Click="btnPoint_Click"/>
-        <Button x:Name="btnDivision" Content="/" Grid.Row="1" Grid.Column="3" FontSize="20" Margin="2" Click="operationButton_Click"/>
-        <Button x:Name="btnMultiplication" Content="*" Grid.Row="2" Grid.Column="3" FontSize="20" Margin="2" Click="operationButton_Click"/>
-        <Button x:Name="btnSum" Content="+" Grid.Row="3" Grid.Column="4" FontSize="20" Margin="2" Click="operationButton_Click"/>
-        <Button x:Name="btnSubtraction" Content="-" Grid.Row="4" Grid.Column="3" FontSize="20" Margin="2" Click="operationButton_Click"/>
-        <Button x:Name="btnEquals" Content="=" Grid.Row="5" Grid.Column="2" FontSize="20" Margin="2" Grid.ColumnSpan="2" Click="btnEquals_Click"/>
-        <Button x:Name="btnBack" Content="←" Grid.Row="1" Grid.Column="0" FontSize="20" Margin="2" Click="btnBack_Click"/>
-        <Button x:Name="btnClearEntry" Content="CE" Grid.Row="1" Grid.Column="1" FontSize="20" Margin="2" Click="btnClearEntry_Click"/>
-        <Button x:Name="btnClearAll" Content="C" Grid.Row="1" Grid.Column="2" FontSize="20" Margin="2" Click="btnClearAll_Click"/>
+        <TextBox x:Name="txbSMALL" Grid.Row="0" Grid.ColumnSpan="4" Margin="2" TextAlignment="Right" Text="0" FontSize="25" IsReadOnly="True"/>
+        <TextBox x:Name="txbBIG" Grid.Row="1" Grid.ColumnSpan="4" Margin="2" TextAlignment="Right" Text="0" FontSize="25" IsReadOnly="True"/>
+        <Button x:Name="btn7" Content="7" Grid.Row="3" Grid.Column="0" FontSize="20" Margin="2" Click="btn7_Click"/>
+        <Button x:Name="btn8" Content="8" Grid.Row="3" Grid.Column="1" FontSize="20" Margin="2" Click="btn8_Click"/>
+        <Button x:Name="btn9" Content="9" Grid.Row="3" Grid.Column="2" FontSize="20" Margin="2" Click="btn9_Click"/>
+        <Button x:Name="btn4" Content="4" Grid.Row="4" Grid.Column="0" FontSize="20" Margin="2" Click="btn4_Click"/>
+        <Button x:Name="btn5" Content="5" Grid.Row="4" Grid.Column="1" FontSize="20" Margin="2" Click="btn5_Click"/>
+        <Button x:Name="btn6" Content="6" Grid.Row="4" Grid.Column="2" FontSize="20" Margin="2" Click="btn6_Click"/>
+        <Button x:Name="btn1" Content="1" Grid.Row="5" Grid.Column="0" FontSize="20" Margin="2" Click="btn1_Click"/>
+        <Button x:Name="btn2" Content="2" Grid.Row="5" Grid.Column="1" FontSize="20" Margin="2" Click="btn2_Click"/>
+        <Button x:Name="btn3" Content="3" Grid.Row="5" Grid.Column="2" FontSize="20" Margin="2" Click="btn3_Click"/>
+        <Button x:Name="btn0" Content="0" Grid.Row="6" Grid.Column="0" FontSize="20" Margin="2" Click="btn0_Click"/>
+        <Button x:Name="btnCOMMA" Content="." Grid.Row="6" Grid.Column="1" FontSize="20" Margin="2" Click="btnCOMMA_Click"/>
+        <Button x:Name="btnDIVIDE" Content="/" Grid.Row="2" Grid.Column="3" FontSize="20" Margin="2" Click="btnDIVIDE_Click"/>
+        <Button x:Name="btnMULT" Content="*" Grid.Row="3" Grid.Column="3" FontSize="20" Margin="2" Click="btnMULT_Click"/>
+        <Button x:Name="btnPLUS" Content="+" Grid.Row="4" Grid.Column="4" FontSize="20" Margin="2" Click="btnPLUS_Click"/>
+        <Button x:Name="btnMINUS" Content="-" Grid.Row="5" Grid.Column="3" FontSize="20" Margin="2" Click="btnMINUS_Click"/>
+        <Button x:Name="btnEQU" Content="=" Grid.Row="6" Grid.Column="2" FontSize="20" Margin="2" Grid.ColumnSpan="2" Click="btnEQU_Click"/>
+        <Button x:Name="btnERASE" Content="←" Grid.Row="2" Grid.Column="0" FontSize="20" Margin="2" Click="btnERASE_Click"/>
+        <Button x:Name="btnCE" Content="CE" Grid.Row="2" Grid.Column="1" FontSize="20" Margin="2" Click="btnCE_Click"/>
+        <Button x:Name="btnC" Content="C" Grid.Row="2" Grid.Column="2" FontSize="20" Margin="2" Click="btnCE_Click"/>
     </Grid>
 </Window>

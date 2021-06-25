@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using WPFCalc.Utils;
+using WpfCalculator.Others;
 
 namespace WPFCalc
 {
@@ -12,140 +12,488 @@ namespace WPFCalc
     /// </summary>
     public partial class MainWindow : Window
     {
-        string DecimalSeparator => CultureInfo.CurrentUICulture.NumberFormat.NumberDecimalSeparator;
-        decimal FirstValue { get; set; }
-        decimal? SecondValue { get; set; }
-
-        IOperation CurrentOperation;
-
+        public static int comma = 0;
+        public static int func = 0;
+        public static int PorM = 0;
+        public static int sw = 0;
+        public static string num1 = null;
+        public static int lght = 0;
         public MainWindow()
         {
             InitializeComponent();
-            btnPoint.Content = DecimalSeparator;
-            btnSum.Tag = new Sum();
-            btnSubtraction.Tag = new Subtraction();
-            btnDivision.Tag = new Division();
-            btnMultiplication.Tag = new Multiplication();
         }
 
-        private void regularButtonClick(object sender, RoutedEventArgs e)
-            => SendToInput(((Button)sender).Content.ToString());
-        
-        private void SendToInput(string content)
+        public void BlockUnlock(int n)
         {
-            if (txtInput.Text == "0")
-                txtInput.Text = "";
-
-            txtInput.Text = $"{txtInput.Text}{content}";
-        }
-
-        private void btnPoint_Click(object sender, RoutedEventArgs e)
-        {
-            if (txtInput.Text.Contains(this.DecimalSeparator))
-                return;
-
-            regularButtonClick(sender, e);
-        }
-
-        private void btnBack_Click(object sender, RoutedEventArgs e)
-        {
-            if (txtInput.Text == "0")
-                return;
-
-            txtInput.Text = txtInput.Text.Substring(0, txtInput.Text.Length - 1);
-            if (txtInput.Text == "")
-                txtInput.Text = "0";
-        }
-
-        private void operationButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (CurrentOperation == null)
-                FirstValue = Convert.ToDecimal(txtInput.Text);
-
-            CurrentOperation = (IOperation)((Button)sender).Tag;
-            SecondValue = null;
-            txtInput.Text = "";
-        }
-
-        private void Window_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            switch (e.Text)
+            if (n == 1)
             {
-                case "0":
-                case "1":
-                case "2":
-                case "3":
-                case "4":
-                case "5":
-                case "6":
-                case "7":
-                case "8":
-                case "9":
-                    SendToInput(e.Text);
-                    break;
+                btn0.IsEnabled = false;
+                btn1.IsEnabled = false;
+                btn2.IsEnabled = false;
+                btn3.IsEnabled = false;
+                btn4.IsEnabled = false;
+                btn5.IsEnabled = false;
+                btn6.IsEnabled = false;
+                btn7.IsEnabled = false;
+                btn8.IsEnabled = false;
+                btn9.IsEnabled = false;
+                btnCE.IsEnabled = false;
+                btnEQU.IsEnabled = false;
+                btnDIVIDE.IsEnabled = false;
+                btnMULT.IsEnabled = false;
+                btnMINUS.IsEnabled = false;
+                btnPLUS.IsEnabled = false;
+                btnERASE.IsEnabled = false;
+                btnCOMMA.IsEnabled = false;
 
-                case "*":
-                    btnMultiplication.PerformClick();
-                    break;
-
-                case "-":
-                    btnSubtraction.PerformClick();
-                    break;
-
-                case "+":
-                    btnSum.PerformClick();
-                    break;
-
-                case "/":
-                    btnDivision.PerformClick();
-                    break;
-
-                case "=":
-                    btnEquals.PerformClick();
-                    break;
-
-                default:
-                    if (e.Text == DecimalSeparator)
-                        btnPoint.PerformClick();
-                    else if (e.Text[0] == (char)8)
-                        btnBack.PerformClick();
-                    else if (e.Text[0] == (char)13)
-                        btnEquals.PerformClick();
-
-                    break;
+                txbSMALL.Text = "";
             }
-
-            btnEquals.Focus();
+            else if (n == 2)
+            {
+                btn0.IsEnabled = true;
+                btn1.IsEnabled = true;
+                btn2.IsEnabled = true;
+                btn3.IsEnabled = true;
+                btn4.IsEnabled = true;
+                btn5.IsEnabled = true;
+                btn6.IsEnabled = true;
+                btn7.IsEnabled = true;
+                btn8.IsEnabled = true;
+                btn9.IsEnabled = true;
+                btnCE.IsEnabled = true;
+                btnEQU.IsEnabled = true;
+                btnDIVIDE.IsEnabled = true;
+                btnMULT.IsEnabled = true;
+                btnMINUS.IsEnabled = true;
+                btnPLUS.IsEnabled = true;
+                btnERASE.IsEnabled = true;
+                btnCOMMA.IsEnabled = true;
+            }
         }
 
-        private void btnEquals_Click(object sender, RoutedEventArgs e)
+        private void btn0_Click(object sender, RoutedEventArgs e)
         {
-            if (CurrentOperation == null)
-                return;
+            txbBIG.Text += 0;
+        }
 
-            if (txtInput.Text == "")
-                return;
+        private void btn1_Click(object sender, RoutedEventArgs e)
+        {
+            txbBIG.Text += 1;
+        }
 
-            decimal val2 = SecondValue ?? Convert.ToDecimal(txtInput.Text);
+        private void btn2_Click(object sender, RoutedEventArgs e)
+        {
+            txbBIG.Text += 2;
+        }
+
+        private void btn3_Click(object sender, RoutedEventArgs e)
+        {
+            txbBIG.Text += 3;
+        }
+
+        private void btn4_Click(object sender, RoutedEventArgs e)
+        {
+            txbBIG.Text += 4;
+        }
+
+        private void btn5_Click(object sender, RoutedEventArgs e)
+        {
+            txbBIG.Text += 5;
+        }
+
+        private void btn6_Click(object sender, RoutedEventArgs e)
+        {
+            txbBIG.Text += 6;
+        }
+
+        private void btn7_Click(object sender, RoutedEventArgs e)
+        {
+            txbBIG.Text += 7;
+        }
+
+        private void btn8_Click(object sender, RoutedEventArgs e)
+        {
+            txbBIG.Text += 8;
+        }
+
+        private void btn9_Click(object sender, RoutedEventArgs e)
+        {
+            txbBIG.Text += 9;
+        }
+
+        private void btnC_Click(object sender, RoutedEventArgs e)
+        {
             try
             {
-                txtInput.Text = (FirstValue = CurrentOperation.DoOperation(FirstValue, (decimal)(SecondValue = val2))).ToString();
+                txbBIG.Text = null;
+                txbSMALL.Text = null;
+                comma = 0;
+                PorM = 0;
+                func = 0;
+                num1 = null;
+
+                BlockUnlock(2);
             }
-            catch(DivideByZeroException)
+            catch (Exception)
             {
-                MessageBox.Show("Не могу разделить на ноль","Делится на ноль", MessageBoxButton.OK, MessageBoxImage.Error);
-                btnClearAll.PerformClick();
+                txbBIG.Text = "Ошибка";
+                BlockUnlock(1);
+            }
+
+        }
+
+        private void btnCE_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                txbBIG.Text = null;
+                comma = 0;
+                PorM = 0;
+            }
+            catch (Exception)
+            {
+                txbBIG.Text = "Ошибка";
+                BlockUnlock(1);
+            }
+
+        }
+
+        private void btnERASE_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                int lenght = txbBIG.Text.Length - 1;
+                string text = txbBIG.Text;
+                txbBIG.Text = null;
+                for (int i = 0; i < lenght; i++)
+                {
+                    txbBIG.Text += text[i];
+                }
+            }
+            catch (Exception)
+            {
+                txbBIG.Text = "Ошибка";
+                BlockUnlock(1);
+            }
+
+        }
+
+        private void btnCOMMA_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (comma == 0)
+                {
+                    txbBIG.Text += ",";
+                    comma = 1;
+                }
+            }
+            catch (Exception)
+            {
+                txbBIG.Text = "Ошибка";
+                BlockUnlock(1);
+            }
+
+
+        }
+
+
+
+        private void btnPOW_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if ((num1 != string.Empty) && (txbBIG.Text != "-"))
+                {
+                    num1 = txbBIG.Text;
+                    txbSMALL.Text = txbBIG.Text + "^";
+                    txbBIG.Text = null;
+                    func = 3;
+
+                }
+
+            }
+            catch (Exception)
+            {
+                txbBIG.Text = "Ошибка";
+                BlockUnlock(1);
             }
         }
 
-        private void btnClearEntry_Click(object sender, RoutedEventArgs e)
-            => txtInput.Text = "0";
 
-        private void btnClearAll_Click(object sender, RoutedEventArgs e)
+        private void btnDIVIDE_Click(object sender, RoutedEventArgs e)
         {
-            FirstValue = 0;
-            CurrentOperation = null;
-            txtInput.Text = "0";
+            try
+            {
+                num1 = txbBIG.Text;
+                if ((num1 != string.Empty) && (txbBIG.Text != "-"))
+                {
+                    txbSMALL.Text = txbBIG.Text + "/";
+                    txbBIG.Text = null;
+                    func = 5;
+                    comma = 0;
+
+                    btnEQU.IsEnabled = true;
+                }
+            }
+            catch (Exception)
+            {
+                txbBIG.Text = "Ошибка";
+                BlockUnlock(1);
+            }
+
         }
+
+        private void btnMULT_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                num1 = txbBIG.Text;
+                if ((num1 != string.Empty) && (txbBIG.Text != "-"))
+                {
+                    txbSMALL.Text = txbBIG.Text + "×";
+                    txbBIG.Text = null;
+                    func = 6;
+                    comma = 0;
+
+                    btnEQU.IsEnabled = true;
+                }
+            }
+            catch (Exception)
+            {
+                txbBIG.Text = "Ошибка";
+                BlockUnlock(1);
+            }
+
+        }
+
+        private void btnMINUS_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (txbBIG.Text == string.Empty)
+                {
+                    txbBIG.Text = "-";
+                    PorM = 1;
+                }
+                else if ((txbBIG.Text != null) && (txbBIG.Text != "-"))
+                {
+                    num1 = txbBIG.Text;
+                    if (num1 != string.Empty)
+                    {
+                        txbSMALL.Text = txbBIG.Text + "-";
+                        txbBIG.Text = null;
+                        func = 7;
+                        PorM = 0;
+                        comma = 0;
+
+                        btnEQU.IsEnabled = true;
+                    }
+                }
+
+            }
+            catch (Exception)
+            {
+                txbBIG.Text = "Ошибка";
+                BlockUnlock(1);
+            }
+
+
+        }
+
+        private void btnPLUS_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                num1 = txbBIG.Text;
+                if ((num1 != string.Empty) && (txbBIG.Text != "-"))
+                {
+                    txbSMALL.Text = txbBIG.Text + "+";
+                    txbBIG.Text = null;
+                    func = 8;
+                    comma = 0;
+
+                    btnEQU.IsEnabled = true;
+                }
+            }
+            catch (Exception)
+            {
+                txbBIG.Text = "Ошибка";
+                BlockUnlock(1);
+            }
+
+        }
+
+        private void btnEQU_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if ((num1 != string.Empty) && (txbBIG.Text != "-") && (txbBIG.Text != string.Empty))
+                {
+                    if (func == 1)
+                    {
+                        txbSMALL.Text += txbBIG.Text + "=";
+
+                        num1 = null;
+                        comma = 0;
+                    }
+                    else if (func == 3)
+                    {
+                        txbSMALL.Text += txbBIG.Text;
+                        txbBIG.Text = (Calculate.Pow(Convert.ToDouble(num1), Convert.ToDouble(txbBIG.Text))).ToString();
+
+                        string str = txbBIG.Text;
+                        if (txbBIG.Text.Length > 11)
+                        {
+                            txbBIG.Text = null;
+                            txbBIG.Text = Convert.ToString(str[0]) + "," + Convert.ToString(str[1]) + Convert.ToString(str[2]);
+                            txbBIG.Text += $"×10^{str.Length - 1}";
+                        }
+
+                        num1 = null;
+                        comma = 0;
+                    }
+                    else if (func == 5)
+                    {
+                        txbSMALL.Text += txbBIG.Text + "=";
+                        txbBIG.Text = (Calculate.Divide(num1, txbBIG.Text));
+                        if (txbBIG.Text.Length > 10)
+                        {
+                            string text = txbBIG.Text;
+                            txbBIG.Text = null;
+                            for (int i = 0; i < 10; i++)
+                            {
+                                txbBIG.Text += text[i];
+                            }
+
+                        }
+                        comma = 0;
+                        num1 = null;
+                    }
+                    else if (func == 6)
+                    {
+                        txbSMALL.Text += txbBIG.Text + "=";
+                        txbBIG.Text = (Calculate.Multiply(Convert.ToDouble(num1), Convert.ToDouble(txbBIG.Text))).ToString();
+
+                        string str = txbBIG.Text;
+                        if (txbBIG.Text.Length > 11)
+                        {
+                            txbBIG.Text = null;
+                            txbBIG.Text = Convert.ToString(str[0]) + "," + Convert.ToString(str[1]) + Convert.ToString(str[2]);
+                            txbBIG.Text += $"×10^{str.Length - 1}";
+                        }
+                        comma = 0;
+                        num1 = null;
+                    }
+                    else if (func == 7)
+                    {
+                        txbSMALL.Text += txbBIG.Text + "=";
+                        txbBIG.Text = (Calculate.Minus(Convert.ToDouble(num1), Convert.ToDouble(txbBIG.Text))).ToString();
+                        comma = 0;
+                        num1 = null;
+                    }
+                    else if (func == 8)
+                    {
+                        txbSMALL.Text += txbBIG.Text + "=";
+                        txbBIG.Text = (Calculate.Plus(Convert.ToDouble(num1), Convert.ToDouble(txbBIG.Text))).ToString();
+
+                        string str = txbBIG.Text;
+                        if (txbBIG.Text.Length > 11)
+                        {
+                            txbBIG.Text = null;
+                            txbBIG.Text = Convert.ToString(str[0]) + "," + Convert.ToString(str[1]) + Convert.ToString(str[2]);
+                            txbBIG.Text += $"×10^{str.Length - 1}";
+                        }
+
+                        comma = 0;
+                        num1 = null;
+                    }
+
+                    btnEQU.IsEnabled = false;
+                }
+            }
+            catch (Exception)
+            {
+                txbBIG.Text = "Ошибка";
+                BlockUnlock(1);
+            }
+
+
+        }
+
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.Key == Key.D0) ||
+                (e.Key == Key.D1) ||
+                (e.Key == Key.D2) ||
+                (e.Key == Key.D3) ||
+                (e.Key == Key.D4) ||
+                (e.Key == Key.D5) ||
+                (e.Key == Key.D6) ||
+                (e.Key == Key.D7) ||
+                (e.Key == Key.D8) ||
+                (e.Key == Key.D9))
+            {
+                string str = e.Key.ToString();
+                txbBIG.Text += str[1];
+            }
+            else if ((e.Key == Key.NumPad0) ||
+                     (e.Key == Key.NumPad1) ||
+                     (e.Key == Key.NumPad2) ||
+                     (e.Key == Key.NumPad3) ||
+                     (e.Key == Key.NumPad4) ||
+                     (e.Key == Key.NumPad5) ||
+                     (e.Key == Key.NumPad6) ||
+                     (e.Key == Key.NumPad7) ||
+                     (e.Key == Key.NumPad8) ||
+                     (e.Key == Key.NumPad9))
+            {
+                string str = e.Key.ToString();
+                txbBIG.Text += str[6];
+            }
+            else if ((e.Key == Key.OemMinus) || (e.Key == Key.Subtract))
+            {
+                btnMINUS_Click(sender, e);
+            }
+            else if ((e.Key == Key.OemPlus) || (e.Key == Key.Add))
+            {
+                if (txbBIG.Text != string.Empty)
+                {
+                    btnPLUS_Click(sender, e);
+                }
+
+            }
+            else if ((e.Key == Key.Divide))
+            {
+                if (txbBIG.Text != string.Empty)
+                {
+                    btnDIVIDE_Click(sender, e);
+                }
+            }
+            else if (e.Key == Key.Multiply)
+            {
+                if (txbBIG.Text != string.Empty)
+                {
+                    btnMULT_Click(sender, e);
+                }
+            }
+            else if (e.Key == Key.Back)
+            {
+                if (txbBIG.Text != string.Empty)
+                {
+                    btnERASE_Click(sender, e);
+                }
+            }
+            else if (e.Key == Key.Decimal)
+            {
+                if (txbBIG.Text != string.Empty)
+                {
+                    btnC_Click(sender, e);
+                }
+            }
+        }
+
+
     }
 }
